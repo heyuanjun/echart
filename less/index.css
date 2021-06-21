@@ -8,25 +8,22 @@ li {
 }
 body {
   background: url("../images/bg.jpg") no-repeat top center;
-  line-height: 1.15;
 }
 header {
-  position: relative;
   height: 1.25rem;
   background: url("../images/head_bg.png") no-repeat;
-  background-size: 100% 100%;
 }
 header h1 {
   color: #ffffff;
   font-size: 0.375rem;
   text-align: center;
-  line-height: 1rem;
+  line-height: 1.25rem;
 }
 header .showTime {
   position: absolute;
   top: 0;
   right: 0.375rem;
-  line-height: 0.9375rem;
+  line-height: 1.25rem;
   font-size: 0.25rem;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -103,7 +100,7 @@ main .panel h2 {
   line-height: 0.6rem;
   text-align: center;
   color: #fff;
-  font-size: 20px;
+  font-size: 0.25rem;
   font-weight: 400;
 }
 main .panel .chart {
@@ -233,3 +230,4 @@ main .map .map3 {
     transform: translate(-50%, -50%) rotate(-360deg);
   }
 }
+/*# sourceMappingURL=index.css.map */

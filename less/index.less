@@ -10,25 +10,24 @@ li {
 
 body {
   background: url("../images/bg.jpg") no-repeat top center;
-  line-height: 1.15;
 }
 
 header {
-  position: relative;
   height: 1.25rem;
   background: url("../images/head_bg.png") no-repeat;
-  background-size: 100% 100%;
+
   h1 {
     color: #ffffff;
     font-size: 0.375rem;
     text-align: center;
-    line-height: 1rem;
+    line-height: 1.25rem;
   }
+
   .showTime {
     position: absolute;
     top: 0;
     right: 0.375rem;
-    line-height: 0.9375rem;
+    line-height: 1.25rem;
     font-size: 0.25rem;
     color: rgba(255, 255, 255, 0.7);
   }
@@ -40,8 +39,10 @@ main {
   min-width: 1024px;
   max-width: 1920px;
   padding: 0.125rem 0.125rem 0 0.125rem;
+
   .column {
     flex: 3;
+
     &:nth-child(2) {
       flex: 5;
     }
@@ -54,6 +55,7 @@ main {
     background: url(../images/line\(1\).png);
     padding: 0 0.1875rem 0.5rem;
     margin-bottom: 0.1875rem;
+
     &::before {
       position: absolute;
       top: 0;
@@ -64,6 +66,7 @@ main {
       border-top: 2px solid #02a6b5;
       border-left: 2px solid #02a6b5;
     }
+
     &::after {
       position: absolute;
       top: 0;
@@ -74,11 +77,13 @@ main {
       border-top: 2px solid #02a6b5;
       border-right: 2px solid #02a6b5;
     }
+
     .panel-footer {
       position: absolute;
       left: 0;
       bottom: 0;
       width: 100%;
+
       &::before {
         position: absolute;
         bottom: 0;
@@ -89,6 +94,7 @@ main {
         border-bottom: 2px solid #02a6b5;
         border-left: 2px solid #02a6b5;
       }
+
       &::after {
         position: absolute;
         bottom: 0;
@@ -106,9 +112,10 @@ main {
       line-height: 0.6rem;
       text-align: center;
       color: #fff;
-      font-size: 20px;
+      font-size: 0.25rem;
       font-weight: 400;
     }
+
     .chart {
       height: 3rem;
       background-color: pink;
@@ -121,12 +128,15 @@ main {
     font-family: electronicFont;
     src: url(../font/DS-DIGIT.TTF);
   }
+
   .no {
     background: rgba(101, 132, 226, 0.1);
     padding: 0.1875rem;
+
     .no-hd {
       position: relative;
       border: 1px solid rgba(25, 186, 139, 0.17);
+
       &::before {
         content: "";
         position: absolute;
@@ -137,6 +147,7 @@ main {
         top: 0;
         left: 0;
       }
+
       &::after {
         content: "";
         position: absolute;
@@ -147,8 +158,10 @@ main {
         right: 0;
         bottom: 0;
       }
+
       ul {
         display: flex;
+
         li {
           position: relative;
           flex: 1;
@@ -160,6 +173,7 @@ main {
           padding: 0.05rem 0;
           font-family: electronicFont;
           font-weight: bold;
+
           &:first-child::after {
             content: "";
             position: absolute;
@@ -172,8 +186,10 @@ main {
         }
       }
     }
+
     .no-bd ul {
       display: flex;
+
       li {
         flex: 1;
         height: 0.5rem;
@@ -185,9 +201,11 @@ main {
       }
     }
   }
+
   .map {
     position: relative;
     height: 10.125rem;
+
     .chart {
       position: absolute;
       top: 0;
@@ -196,6 +214,7 @@ main {
       height: 10.125rem;
       width: 100%;
     }
+
     .map1,
     .map2,
     .map3 {
@@ -209,6 +228,7 @@ main {
       background-size: 100% 100%;
       opacity: 0.3;
     }
+
     .map2 {
       width: 8.0375rem;
       height: 8.0375rem;
@@ -217,6 +237,7 @@ main {
       animation: rotate 15s linear infinite;
       z-index: 2;
     }
+
     .map3 {
       width: 7.075rem;
       height: 7.075rem;
