@@ -105,7 +105,6 @@ main .panel h2 {
 }
 main .panel .chart {
   height: 3rem;
-  background-color: pink;
 }
 @font-face {
   font-family: electronicFont;
