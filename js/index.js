@@ -289,14 +289,14 @@
     series: [
       {
         name: '新增粉丝',
-        data: [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
+        data: yearData[0].data[0],
         type: 'line',
         // 折线修饰为圆滑
         smooth: true,
       },
       {
         name: '新增游客',
-        data: [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79],
+        data: yearData[0].data[1],
         type: 'line',
         // 折线修饰为圆滑
         smooth: true,
@@ -310,7 +310,108 @@
     myChart.resize()
   })
 
-  $('.line h2').on('click', 'a', function (v) {
-    console.log($(this))
+  $('.line h2').on('click', 'a', function () {
+    // 获取对应年份的 data 数据
+    let indexData = yearData[$(this).index()]
+    console.log(indexData)
+    // 循环赋值
+    indexData.data.forEach((v, k) => {
+      option.series[k].data = v;
+    })
+    // 重新渲染
+    myChart.setOption(option);
+  })
+})();
+
+// 折线图2
+(function () {
+  let myChart = echarts.init(document.querySelector('.line2 .chart'))
+  let option = {
+    tooltip: {
+      trigger: 'axis',
+    },
+    legend: {
+      textStyle: {
+        color: "rgba(255,255,255,.5)",
+        fontSize: "12"
+      },
+      data: ['邮件营销', '联盟广告']
+    },
+    grid: {
+      left: "10",
+      top: "30",
+      right: "10",
+      bottom: "10",
+      containLabel: true
+    },
+    xAxis: [
+      {
+        type: 'category',
+        boundaryGap: false,
+        // 文本颜色为rgba(255,255,255,.6)  文字大小为 12
+        axisLabel: {
+          textStyle: {
+            color: "rgba(255,255,255,.6)",
+            fontSize: 12
+          }
+        },
+        // x轴线的颜色为   rgba(255,255,255,.2)
+        axisLine: {
+          lineStyle: {
+            color: "rgba(255,255,255,.2)"
+          }
+        },
+        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        axisTick: {show: false},
+        axisLine: {
+          lineStyle: {
+            color: "rgba(255,255,255,.1)"
+          }
+        },
+        axisLabel: {
+          textStyle: {
+            color: "rgba(255,255,255,.6)",
+            fontSize: 12
+          }
+        },
+        // 修改分割线的颜色
+        splitLine: {
+          lineStyle: {
+            color: "rgba(255,255,255,.1)"
+          }
+        }
+      }
+    ],
+    series: [
+      {
+        name: '邮件营销',
+        type: 'line',
+        stack: '总量',
+        areaStyle: {},
+        emphasis: {
+          focus: 'series'
+        },
+        data: [120, 132, 101, 134, 90, 230, 210]
+      },
+      {
+        name: '联盟广告',
+        type: 'line',
+        stack: '总量',
+        areaStyle: {},
+        emphasis: {
+          focus: 'series'
+        },
+        data: [220, 182, 191, 234, 290, 330, 310]
+      },
+    ]
+  };
+  myChart.setOption(option)
+  window.addEventListener('resize', function () {
+    myChart.resize()
   })
 })();
