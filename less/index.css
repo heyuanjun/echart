@@ -103,6 +103,10 @@ main .panel h2 {
   font-size: 0.25rem;
   font-weight: 400;
 }
+main .panel h2 a {
+  color: #fff;
+  text-decoration: none;
+}
 main .panel .chart {
   height: 3rem;
 }

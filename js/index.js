@@ -96,7 +96,7 @@
       top: '10%',
       left: '22%',
       bottom: '10%',
-      // 刻度标签位置（因为 left 定义很大，所以不需要考虑刻度标签位置）
+      // 刻度标签位置（true 包含刻度文字）
       // containLabel: true,
     },
     xAxis: {
@@ -127,7 +127,7 @@
         show: true,
         // 是否是反向坐标轴（不设置数据会倒置）
         inverse: true,
-        data:[702, 350, 610, 793, 664],
+        data: [702, 350, 610, 793, 664],
         // y 轴的竖线
         axisLine: {
           show: false
@@ -202,5 +202,115 @@
   // 适配大小
   window.addEventListener('resize', function () {
     myChart.resize()
+  })
+})();
+
+// 折线图1
+(function () {
+  // 模拟后台请求数据
+  const yearData = [
+    {
+      year: '2020',  // 年份
+      data: [  // 两个数组是因为有两条线
+        [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
+        [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79]
+      ]
+    },
+    {
+      year: '2021',  // 年份
+      data: [  // 两个数组是因为有两条线
+        [123, 175, 112, 197, 121, 67, 98, 21, 43, 64, 76, 38],
+        [143, 131, 165, 123, 178, 21, 82, 64, 43, 60, 19, 34]
+      ]
+    }
+  ];
+
+  let myChart = echarts.init(document.querySelector('.line .chart'))
+  let option = {
+    color: ['#00f2f1', '#ed3f35'],
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {
+      textStyle: {
+        color: '#4c9bfd'
+      },
+      // 调整图例组件定位
+      right: '10%',
+      // 如果 series 里面有 name，那么不用写这里的 data
+      // data: ['新增粉丝', '新增游客']
+    },
+    grid: {
+      top: '20%',
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      // 包含刻度文字
+      containLabel: true,
+      // 显示网格边框
+      show: true,
+      borderColor: '#012f4a'
+    },
+    xAxis: {
+      type: 'category',
+      // 去除轴内间距（也就是每一条折线紧贴 y 轴，false 就是无缝隙，紧贴）
+      boundaryGap: false,
+      axisTick: {
+        // 去除刻度
+        show: false
+      },
+      axisLabel: {
+        color: '#4c9bfd'
+      },
+      axisLine: {
+        // 去除 x 轴的线，使用 y 轴的分割线
+        show: false
+      },
+      data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+    },
+    yAxis: {
+      type: 'value',
+      axisTick: {
+        show: false
+      },
+      axisLabel: {
+        color: '#4c9bfd'
+      },
+      axisLine: {
+        // 去除 y 轴的线
+        show: false
+      },
+      splitLine: {
+        lineStyle: {
+          color: '#012f4a'
+        }
+      },
+    },
+    series: [
+      {
+        name: '新增粉丝',
+        data: [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
+        type: 'line',
+        // 折线修饰为圆滑
+        smooth: true,
+      },
+      {
+        name: '新增游客',
+        data: [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79],
+        type: 'line',
+        // 折线修饰为圆滑
+        smooth: true,
+      }
+    ]
+  };
+
+  myChart.setOption(option)
+
+  window.addEventListener('resize', function () {
+    myChart.resize()
+  })
+
+  $('.line h2').on('click', 'a', function (v) {
+    console.log($(this))
   })
 })();
