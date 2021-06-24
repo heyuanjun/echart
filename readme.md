@@ -1685,7 +1685,10 @@ window.addEventListener("resize", function() {
 ### 20- 最后约束缩放
 
 ~~~css
-/* 约束屏幕尺寸 */
+/*约束屏幕尺寸 */
+/*screen是在告知设备在打印页面时使用衬线字体*/
+/*在屏幕上显示时用无衬线字体*/
+
 @media screen and (max-width: 1024px) {
   html {
     font-size: 42px !important;
