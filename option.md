@@ -8,7 +8,7 @@ option = {
     title: {
         text: '折线图堆叠333'
     },
-    // 图表的提示框组件
+    // 图表的提示框组件（鼠标放在折线图上的提示）
     tooltip: {
         // 触发方式
         trigger: 'axis'

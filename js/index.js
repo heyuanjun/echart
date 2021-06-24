@@ -361,7 +361,7 @@
             color: "rgba(255,255,255,.2)"
           }
         },
-        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        data: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "26", "28", "29", "30"]
       }
     ],
     yAxis: [
@@ -391,22 +391,101 @@
       {
         name: '邮件营销',
         type: 'line',
-        stack: '总量',
-        areaStyle: {},
         emphasis: {
           focus: 'series'
         },
-        data: [120, 132, 101, 134, 90, 230, 210]
+        // 折线修饰为圆滑
+        smooth: true,
+        // 单独修改线的样式
+        lineStyle: {
+          color: "#0184d5",
+          width: 2
+        },
+        // 填充区域
+        areaStyle: {
+          // 渐变色，只需要复制即可
+          color: new echarts.graphic.LinearGradient(
+            0,
+            0,
+            0,
+            1,
+            [
+              {
+                offset: 0,
+                color: "rgba(1, 132, 213, 0.4)"   // 渐变色的起始颜色
+              },
+              {
+                offset: 0.8,
+                color: "rgba(1, 132, 213, 0.1)"   // 渐变线的结束颜色
+              }
+            ],
+            false
+          ),
+          shadowColor: "rgba(0, 0, 0, 0.1)"
+        },
+        // 设置拐点 小圆点
+        symbol: "circle",
+        // 拐点大小
+        symbolSize: 8,
+        // 设置拐点颜色以及边框（如果是柱状图就是修改柱子的颜色等）
+        itemStyle: {
+          color: "#0184d5",
+          borderColor: "rgba(221, 220, 107, .1)",
+          borderWidth: 12
+        },
+        // 开始不显示拐点， 鼠标经过显示
+        showSymbol: false,
+        data: [30, 40, 30, 40, 30, 40, 30, 60, 20, 40, 30, 40, 30, 40, 30, 40, 30, 60, 20, 40, 30, 40, 30, 40, 30, 40, 20, 60, 50, 40]
       },
       {
         name: '联盟广告',
         type: 'line',
-        stack: '总量',
-        areaStyle: {},
         emphasis: {
           focus: 'series'
         },
-        data: [220, 182, 191, 234, 290, 330, 310]
+        smooth: true,
+        // 折线修饰为圆滑
+        lineStyle: {
+          normal: {
+            color: "#00d887",
+            width: 2
+          }
+        },
+        areaStyle: {
+          normal: {
+            color: new echarts.graphic.LinearGradient(
+              0,
+              0,
+              0,
+              1,
+              [
+                {
+                  offset: 0,
+                  color: "rgba(0, 216, 135, 0.4)"
+                },
+                {
+                  offset: 0.8,
+                  color: "rgba(0, 216, 135, 0.1)"
+                }
+              ],
+              false
+            ),
+            shadowColor: "rgba(0, 0, 0, 0.1)"
+          }
+        },
+        // 设置拐点 小圆点
+        symbol: "circle",
+        // 拐点大小
+        symbolSize: 5,
+        // 设置拐点颜色以及边框
+        itemStyle: {
+          color: "#00d887",
+          borderColor: "rgba(221, 220, 107, .1)",
+          borderWidth: 12
+        },
+        // 开始不显示拐点， 鼠标经过显示
+        showSymbol: false,
+        data: [130, 10, 20, 40, 30, 40, 80, 60, 20, 40, 90, 40, 20, 140, 30, 40, 130, 20, 20, 40, 80, 70, 30, 40, 30, 120, 20, 99, 50, 20]
       },
     ]
   };
@@ -415,3 +494,66 @@
     myChart.resize()
   })
 })();
+
+// 饼状图1
+(function () {
+  let myChart = echarts.init(document.querySelector('.pie .chart'))
+  let option = {
+    color: [
+      "#065aab",
+      "#066eab",
+      "#0682ab",
+      "#0696ab",
+      "#06a0ab",
+    ],
+    tooltip: {
+      trigger: 'item'
+    },
+    legend: {
+      // 距离底部为0%
+      bottom: "0%",
+      // 小图标的宽度和高度
+      itemWidth: 8,
+      itemHeight: 8,
+      data: ["0岁以下", "20-29岁", "30-39岁", "40-49岁", "50岁以上"],
+      // 修改图例组件的文字为 12px
+      textStyle: {
+        color: "rgba(255,255,255,.5)",
+        fontSize: "9"
+      }
+    },
+    // - 修改水平居中 垂直居中
+    // - 修改内圆半径和外圆半径为    ["40%", "60%"]
+    // pink老师友情提示，带有直角坐标系的比如折线图柱状图是 grid修改图形大小，
+    // 而我们饼形图是通过 radius 修改大小
+    series: [
+      {
+        name: "年龄分布",
+        type: "pie",
+        // 设置饼形图在容器中的位置
+        center: ["50%", "40%"],
+        //  修改内圆半径和外圆半径为  百分比是相对于容器宽度来说的
+        radius: ["40%", "60%"],
+        // 图形中间的文字
+        label: {show: false},
+        // 连接图形和文字的线
+        labelLine: {show: false},
+        data: [
+          {value: 1, name: "0岁以下"},
+          {value: 4, name: "20-29岁"},
+          {value: 2, name: "30-39岁"},
+          {value: 2, name: "40-49岁"},
+          {value: 1, name: "50岁以上"}
+        ],
+      }
+    ]
+  };
+
+  myChart.setOption(option)
+
+  window.addEventListener('resize', function () {
+    myChart.resize()
+  })
+})();
+
+// 饼状图2
